@@ -76,18 +76,27 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", report))
 
+    # Run bot
+if not cetusbot:  # pooling mode
+    print("Can't detect 'HEROKU_APP_NAME' env. Running bot in pooling mode.")
+    print("Note: this is not a great way to deploy the bot in Heroku.")
 
-    # Start the Bot
-    updater.start_webhook(listen="0.0.0.0",
-                          port=PORT,
-                          url_path="1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A")
-    # updater.bot.set_webhook(url=settings.WEBHOOK_URL)
-    updater.bot.set_webhook(cetusbot + "1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A")
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
+    updater.start_polling()
     updater.idle()
+
+else:  # webhook mode
+    print(f"Running bot in webhook mode. Make sure that this url is correct: https://cetusbot.herokuapp.com/")
+    updater.start_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        url_path="1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A",
+        webhook_url=f"https://cetusbot.herokuapp.com/1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A"
+    )
+
+#    updater.bot.set_webhook(f"https://{HEROKU_APP_NAME}.herokuapp.com/{TELEGRAM_TOKEN}")
+    updater.idle()
+  
+    
 
 
 if __name__ == '__main__':
