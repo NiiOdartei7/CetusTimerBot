@@ -33,13 +33,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 PORT = int(os.environ.get('PORT', '8443'))
 
- # Start the Bot
-    updater.start_webhook(listen="0.0.0.0",
-                          port=PORT,
-                          url_path=TOKEN)
-    # updater.bot.set_webhook(url=settings.WEBHOOK_URL)
-    updater.bot.set_webhook(cetusbot + "1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A")
-
+ 
 def report(update, context):
     url = "https://hub.warframestat.us/#/"
     driver = webdriver.Chrome('C:/Users/niiod/Downloads/chromedriver_win32/chromedriver.exe')
@@ -79,7 +73,7 @@ def main():
     # Start the Bot
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
-                          url_path=TOKEN)
+                          url_path="1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A")
     # updater.bot.set_webhook(url=settings.WEBHOOK_URL)
     updater.bot.set_webhook(cetusbot + "1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A")
 
