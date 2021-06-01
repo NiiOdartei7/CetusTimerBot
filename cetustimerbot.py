@@ -31,7 +31,14 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
+PORT = int(os.environ.get('PORT', '8443'))
 
+ # Start the Bot
+    updater.start_webhook(listen="0.0.0.0",
+                          port=PORT,
+                          url_path=TOKEN)
+    # updater.bot.set_webhook(url=settings.WEBHOOK_URL)
+    updater.bot.set_webhook(cetusbot + "1892423720:AAHjtdCH_-zz6UPYTnEH8s_vSm22mG0l58A")
 
 def report(update, context):
     url = "https://hub.warframestat.us/#/"
