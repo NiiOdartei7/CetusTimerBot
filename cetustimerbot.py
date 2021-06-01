@@ -77,14 +77,8 @@ def main():
     dp.add_handler(CommandHandler("start", report))
 
     # Run bot
-if not cetusbot:  # pooling mode
-    print("Can't detect 'HEROKU_APP_NAME' env. Running bot in pooling mode.")
-    print("Note: this is not a great way to deploy the bot in Heroku.")
 
-    updater.start_polling()
-    updater.idle()
-
-else:  # webhook mode
+ # webhook mode
     print(f"Running bot in webhook mode. Make sure that this url is correct: https://cetusbot.herokuapp.com/")
     updater.start_webhook(
         listen="0.0.0.0",
