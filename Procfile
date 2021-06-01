@@ -1,1 +1,1 @@
-web: python3 cetusbot.py
+web: python3 cetustimerbot.py
